@@ -6,7 +6,7 @@
                     <div class="card-header">POLIGON</div>
                     <div class="card-body">
                         <select name="" class="form-control">
-                            <option>Kategory</option>
+                            <option>All Kategory</option>
                             <option value="">Dosen</option>
                             <option value="">Mahasiswa</option>
                             <option value="">Tenaga Akademik</option>
