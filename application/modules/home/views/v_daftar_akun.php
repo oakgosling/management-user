@@ -15,12 +15,16 @@
                         <div>
                             <table>
                                 <tr>
-                                    <td>1</td>
-                                    <td>.</td>
-                                    <td>Troy Mokoagow</td>
+                                    <td><span class="badge badge-primary">M</span>&nbsp;&nbsp;Troy Mokoagow</td>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td><a href="" data-toggle="modal" data-target="#modalform"><img width="20" src="<?php echo base_url() ?>assets/svg/si-glyph-triangle-right.svg"/></a></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge badge-info">D</span>&nbsp;&nbsp;Ismail Mohidin</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge badge-success">TA</span>&nbsp;&nbsp;Gilang Suleman</td>
                                 </tr>
                             </table>
                         </div>
