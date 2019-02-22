@@ -1,3 +1,5 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
 <div class="span12">
     <div class="content">
         <div class="row">
@@ -130,13 +132,57 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+          <form action="pro-registrasi" method="post">
+            <div class="form-group">
+              <select name="kd" id="cari_nama" class="form-control">
+                <option>Nama Lengkap</option>
+                <option>fss</option>
+                <option>fsfs</option>
+                <option>fsfs</option>
+                <option>fsf</option>
+                <option>fsfs</option>
+                <option>fsf</option>
+                <?php foreach($nUsr as $cc) : ?>
+                    <option value="<?= $cc->nik?>">
+                        <?= $cc->nama_lengkap?> | <?= $cc->tipe?>
+                    </option>
+                <?php endforeach; ?>
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" class="form-control" placeholder="Email" autocomplete="off" required>
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" class="form-control" placeholder="Password" autocomplete="off" required>
+            </div>
+            <div class="form-group">
+              <select name="lv" class="form-control">
+                <option>Level</option>
+                <?php foreach ($lvl as $cx) : ?>
+                    <option value="<?= $cx->id_level?>">
+                      <?= $cx->level?>
+                    </option>
+                <?php endforeach; ?>
+              </select>
+            </div>
+          </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-        <button type="button" class="btn btn-primary">Simpan</button>
+        <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
       </div>
     </div>
   </div>
 </div>
+
+<script src="<?php echo base_url();?>assets/scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script>
+        $(document).ready(function() { 
+            $("#cari_nama").select2({
+                    placeholder: "pilih nama",
+                    allowClear: true
+             }); 
+        });
+</script>
                                    

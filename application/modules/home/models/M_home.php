@@ -1,10 +1,10 @@
 <?php
 
-class M_home extends MY_Model {
+class M_home extends CI_Model {
 
 	public function getData($table)
 	{
-		return $this->db->get("$table")->result();
+		return $this->db->get('$table')->result();
 	}
 
 	public function dlt($table,$where,$id)
@@ -14,6 +14,7 @@ class M_home extends MY_Model {
 		return TRUE;
     }
 
+    // 
 	public function ulv($id){
 		return $this->db->query("SELECT level as lv_nama FROM t_level WHERE id_level='$id'")->result();
 	}
