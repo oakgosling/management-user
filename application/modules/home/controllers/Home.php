@@ -5,6 +5,7 @@ class Home extends CI_Controller {
 
 	public function __construct(){
         parent::__construct();
+        $this->load->model('home/m_home');
         if (!$this->session->userdata('security')){
             $this->session->set_flashdata('gagal','Maaf Anda Belum Login');
             redirect('login');
@@ -15,11 +16,15 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$b['l'] = $this->m_home->ulv($this->lv);
-		$b['lvl'] = $this->m_home->getData('t_level');
-		$b['usr'] = $this->m_home->dftUsr();
-		$b['nUsr'] = $this->m_home->nDataUsr();
-		$this->load->view('v_index',$b);
+		$data['judul'] = "ADMIN POLITEKNIK GORONTALO";
+		$data['l'] = $this->m_home->ulv($this->lv);
+		$data['lvl'] = $this->m_home->getData('t_level');
+		$data['usr'] = $this->m_home->dftUsr();
+		$data['list_biodata'] = $this->m_home->list_biodata();
+
+		$this->load->view('templates/v_header', $data);
+		$this->load->view('v_index', $data);
+		$this->load->view('templates/v_footer', $data);
 	}
 	public function daftar(){
 		$data['kd_user'] = $this->input->post('kd');
