@@ -32,10 +32,10 @@
 						</div>
 						<div class="card-body">
 							<div class="form-group">
-								<input class="form-control" type="text" name="username" id="inputEmail" placeholder="Username" autofocus autocomplete="off">
+								<input class="form-control" type="text" name="username" placeholder="Username" autofocus autocomplete="off" required>
 							</div>
 							<div class="form-group">
-									<input class="form-control" type="password" name="password" id="inputPassword" placeholder="Password" autocomplete="off">
+								<input class="form-control" type="password" name="password" placeholder="Password" autocomplete="off" required>
 							</div>
 						</div>
 						<div class="card-footer">

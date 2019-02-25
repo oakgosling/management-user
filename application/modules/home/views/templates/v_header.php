@@ -35,9 +35,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item"><a href="#" class="nav-link">
-                <?php foreach ($l as $cek_level) {
-                  echo $cek_level->lv_nama;
-                }?></a>
+                <?php echo $this->session->userdata('username') ?></a>
               </li>
 
               <li class="nav-item dropdown">

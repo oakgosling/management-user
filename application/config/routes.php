@@ -53,6 +53,6 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['pro-login'] = 'login/ckl/';
+$route['pro-login'] = 'login/cek_login';
 $route['pro-registrasi'] = 'home/daftar/';
-$route['pro-logout'] = 'login/cklg/';
+$route['pro-logout'] = 'login/logout/';

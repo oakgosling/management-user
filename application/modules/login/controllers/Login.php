@@ -4,45 +4,30 @@ class Login extends MX_Controller {
 	public function __construct()
     {
         parent::__construct();
-        $this->load->model('m_login');
     }
 
 	public function index()
     {
-        if (!$this->session->userdata('security'))
-        {
-            $this->load->view('v_index');
-        } else {
-            redirect('home','refresh');
-        }
+        $this->load->view('v_index');
     }
- 
-    public function ckl()
-    {
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
 
-        if ($cekLogin = $this->m_login->clgn($username, $password))
-        {
-            if ($cekLogin->lv == '0')
-            {
-                $this->session->set_userdata('security',$cekLogin);
-                redirect('home','refresh');
-            }
-            elseif(!$cekLogin->lv == '0')
-            {
-                $this->session->set_flashdata('belum_aktif', '<div >maaf username dan password belum aktif</div>');
-                redirect('');
-            }
+    public function cek_login()
+    {
+        $user = $this->input->post('username');
+        $pass = $this->input->post('password');
+
+        if ($user == 'admin' && $pass == 'admin') {
+            $this->session->set_userdata('username', $user);
+            redirect('home');
         } else {
-            $this->session->set_flashdata('error', '<div >maaf username dan password anda salah</div>');
-            redirect('');     
-        }
+            redirect('login');
+        }  
     }
         
-    public function cklg()
+    public function logout()
     {
-        $this->session->sess_destroy();
-        redirect('');
+        //$this->session->sess_destroy();
+        $this->session->unset_userdata(array('username' => ''));
+        redirect('login');
     }
 }
