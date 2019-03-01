@@ -22,8 +22,8 @@
 										<div class="form-group">
 											<select name="lv" class="form-control">
 												<option value="">Level</option>
-												<?php foreach ($lvl as $cx) { ?>
-												<option value="<?= $cx->id_level?>"><?= $cx->level?></option>
+												<?php foreach ($level as $lv) { ?>
+												<option value="<?= $lv->id_level?>"><?= $lv->level?></option>
 												<?php } ?>
 											</select>
 										</div>

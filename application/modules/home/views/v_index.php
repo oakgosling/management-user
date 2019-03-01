@@ -1,7 +1,202 @@
-		<div id="panel">
-		  <?php echo $this->load->view('v_button_users');?>
-		</div> 
-			
-		</div id="btn-tmb">
-			<?php echo $this->load->view('v_home');?>
-		</div>
+<div id="btn-users">
+    <button type="button" onclick="btnUsers();" class="btn btn-danger btn-sm">users</button>
+    <?php $this->load->view('v_index1'); ?>
+</div> 
+
+<div id="btn-level">
+    <button type="button" onclick="btnLevel();" class="btn btn-danger btn-sm">level</button>
+</div>        
+<div class="wrapper">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">POLIGON</div>
+        <div class="card-body">
+          <select name="" class="form-control">
+            <option value="">All Kategory</option>
+            <option value="">Dosen</option>
+            <option value="">Mahasiswa</option>
+            <option value="">Tenaga Akademik</option>
+          </select> <br />
+          
+          <input type="search" name="search" class="form-control" placeholder="Search .." autofocus>
+          <br />
+                            
+          <table cellpadding="6">
+          <?php foreach($list_biodata as $list_bio) : ?>
+            <tr>
+              <td>                                       
+                <?php if ($list_bio->tipe == 'mahasiswa'): ?>
+                  <span class="badge badge-primary">M</span>
+                <?php endif ?>
+                <?php if ($list_bio->tipe == 'dosen'): ?>
+                  <span class="badge badge-secondary">D</span>
+                <?php endif ?>
+                <?php if ($list_bio->tipe == 'karyawan'): ?>
+                  <span class="badge badge-success">TA</span>
+                <?php endif ?>
+              </td>
+              <td>
+                <?= $list_bio->nama_lengkap ?>
+              </td>
+              <td>
+                <a style="cursor: pointer;" onclick="get_nama(
+                    '<?= $list_bio->nik ?>',
+                    '<?= $list_bio->nama_lengkap ?>')"
+                  data-toggle="modal" data-target="#modalform">
+                      <img width="20" src="<?php echo base_url() ?>assets/svg/si-glyph-triangle-right.svg"/>
+                </a>
+              </td>
+            </tr>
+            <?php endforeach; ?>
+          </table>
+        </div> <br /> <!-- end card body -->
+
+        <div class="card-footer">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div> <!-- end card footer -->
+      </div> <!-- end card -->
+    </div> <!-- end col -->
+
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">ALL MEMBERS</div>
+          <div class="card-body">
+            <div class="col col-md-4">
+              <input type="search" name="search" class="form-control" placeholder="Search ..">
+            </div> <br />
+
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nama</th>
+                  <th scope="col">Level</th>
+                  <th scope="col">Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Troy Mokoagow</td>
+                  <td>Mahasiswa</td>
+                  <td>
+                    <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail">Detail</button>
+                    &nbsp;&nbsp;
+                    <a href="#">
+                      <img width="20" src="<?php echo base_url() ?>assets/svg/si-glyph-trash.svg"/>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div> <!-- end card body -->
+
+          <div class="card-footer">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-end">
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div> <!-- end card footer -->
+        </div> <!-- end card -->
+    </div> <!-- end col -->
+  </div> <!-- end row -->
+
+<!-- Modal form create user -->
+<div class="modal fade" id="modalform" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-info">
+        <h5 style="color: #fff" class="modal-title" id="exampleModalLabel">Buat User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form action="pro-registrasi" method="post">
+            <div class="form-group">
+              <input type="text" name="nik" id="nik">
+              <input type="text" class="form-control" id="nama_lengkap" disabled>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" class="form-control" placeholder="Email" autocomplete="off" required>
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" class="form-control" placeholder="Password" autocomplete="off" required>
+            </div>
+            <div class="form-group">
+              <select name="lv" class="form-control">
+                <option>Level</option>
+                <?php foreach ($level as $lv) : ?>
+                    <option value="<?= $lv->id_level?>">
+                      <?= $lv->level?>
+                    </option>
+                <?php endforeach; ?>
+              </select>
+            </div>
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal detail user -->
+<div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detail User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div> <!-- end wrapper -->  
+                                   

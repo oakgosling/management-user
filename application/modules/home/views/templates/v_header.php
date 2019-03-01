@@ -11,8 +11,15 @@
         <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
             rel='stylesheet'>
             <style>
-              #panel{
+              #btn-users{
                 display: none
+              }
+              html, body{
+                max-width: 100%;
+                overflow-x: hidden;
+              }
+              .wrapper{
+                padding: 50px;
               }
               .footer{
                 position: fixed;
@@ -22,10 +29,17 @@
                 background-color: #eee;
                 padding: 5px;               
               }
+              .card-footer{
+                padding: 0;
+              }
+              .pagination{
+                margin-top: 15px;
+                margin-right: 20px;
+              }
             </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
           <a class="navbar-brand" href="#">ADMIN SIAKAD</a>
 
           <!-- button burger -->
@@ -52,4 +66,4 @@
               </li>
             </ul>
           </div>
-        </nav>
+        </nav><br><br><br>

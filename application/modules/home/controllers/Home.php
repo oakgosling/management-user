@@ -11,24 +11,25 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		$data['judul'] = "ADMIN POLITEKNIK GORONTALO";
-		$data['lvl'] = $this->m_home->getData('t_level');
+		$data['level'] = $this->m_home->getData('t_level');
 		$data['list_biodata'] = $this->m_home->list_biodata();
 
 		$this->load->view('templates/v_header', $data);
 		$this->load->view('v_index', $data);
 		$this->load->view('templates/v_footer', $data);
-	}
+	}	
 
 	// fungsi daftar user
-	// public function daftar(){
-	// 	$data['kd_user'] = $this->input->post('kd');
-	// 	$data['user'] = $this->input->post('email');
-	// 	$data['password'] = $this->input->post('password');
-	// 	$data['id_level'] = $this->input->post('lv');
+	public function daftar(){
+		$data['kd_user'] = $this->input->post('nik');
+		$data['user'] = $this->input->post('email');
+		$data['password'] = $this->input->post('password');
+		$data['pass'] = $this->input->post('password');
+		$data['id_level'] = $this->input->post('lv');
 				
-	// 	$this->m_home->daftar($data);
-	// 	redirect('home');
-	// }
+		$this->m_home->daftar($data);
+		redirect('home');
+	}
 
 	// fungsi delete data
 	// public function dlt($id){
