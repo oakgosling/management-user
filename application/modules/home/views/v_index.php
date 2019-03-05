@@ -146,7 +146,7 @@
         </button>
       </div>
       <div class="modal-body">
-          <form action="pro-registrasi" method="post">
+          <form action="home/daftar" method="post">
             <div class="form-group">
               <input type="text" name="nik" id="nik">
               <input type="text" class="form-control" id="nama_lengkap" disabled>
