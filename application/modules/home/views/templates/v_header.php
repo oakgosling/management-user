@@ -36,11 +36,17 @@
                 margin-top: 15px;
                 margin-right: 20px;
               }
+              .item-drop{
+                padding-left: 20px;
+              }
+              .item-drop a{
+                text-decoration: none;
+              }
             </style>
     </head>
     <body>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-          <a class="navbar-brand" href="#">ADMIN SIAKAD</a>
+          <a class="navbar-brand" href="<?= base_url() ?>home">ADMIN SIAKAD</a>
 
           <!-- button burger -->
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -53,11 +59,17 @@
               </li>
 
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Add Karyawan
+                <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Pengaturan
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><?php echo $this->load->view('v_regis_akun');?></li>
+                <ul class="dropdown-menu item-drop" aria-labelledby="navbarDropdown">
+                  <li><a href="<?= base_url() ?>level">List Level</a></li>
+                  <div class="dropdown-divider"></div>
+                  <li><a href="<?= base_url() ?>url">List Url</a></li>
+                  <div class="dropdown-divider"></div>
+                  <li><a href="<?= base_url() ?>privilege">List Privilege</a></li>
+                  <div class="dropdown-divider"></div>
+                  <li><a href="<?= base_url() ?>hak_akses">Hak Akses</a></li>
                 </ul>
               </li>
               

@@ -8,7 +8,12 @@ class Login extends MX_Controller {
 
 	public function index()
     {
-        $this->load->view('v_index');
+        if($this->session->userdata('username') == ''){
+            $data['judul'] = "Admin Siakad Poligon";
+            $this->load->view('v_index', $data);
+        } else {
+            redirect('home');
+        }
     }
 
     public function cek_login()
@@ -26,7 +31,7 @@ class Login extends MX_Controller {
         
     public function logout()
     {
-        //$this->session->sess_destroy();
+        $this->session->sess_destroy();
         $this->session->unset_userdata(array('username' => ''));
         redirect('login');
     }
