@@ -12,17 +12,21 @@
       <div class="card">
         <div class="card-header">POLIGON</div>
         <div class="card-body">
-          <select name="" class="form-control">
-            <option value="">All Kategory</option>
-            <option value="">Dosen</option>
-            <option value="">Mahasiswa</option>
-            <option value="">Tenaga Akademik</option>
-          </select> <br />
+          <form action="<?= base_url('home/kategori') ?>" method="post">
+              <select name="kategori" class="form-control">
+                <option value="0">All Kategory</option>
+                <option value="1">Dosen</option>
+                <option value="2">Mahasiswa</option>
+                <option value="3">Tenaga Akademik</option>
+              </select>
+              <button type="submit">pilih</button>
+          </form> <br />
           
           <input type="search" name="search" class="form-control" placeholder="Search .." autofocus>
           <br />
                             
-          <table cellpadding="6">
+          <table class="table table-hover">
+          <?php if(!empty($list_biodata)) { ?>
           <?php foreach($list_biodata as $list_bio) : ?>
             <tr>
               <td>                                       
@@ -49,29 +53,14 @@
               </td>
             </tr>
             <?php endforeach; ?>
+          <?php } else { ?>
+              <tr><td><i>tidak ada data!</i></td></tr>
+          <?php } ?>
           </table>
         </div> <br /> <!-- end card body -->
 
         <div class="card-footer">
-          <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-end">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                  <span class="sr-only">Previous</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+            <?= $paging ?>
         </div> <!-- end card footer -->
       </div> <!-- end card -->
     </div> <!-- end col -->
@@ -84,7 +73,7 @@
               <input type="search" name="search" class="form-control" placeholder="Search ..">
             </div> <br />
           <div class="table-responsive">
-            <table class="table table-striped table-sm">
+            <table class="table table-striped">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -96,14 +85,15 @@
                 </tr>
               </thead>
               <tbody>
+              <?php if(!empty($user)) { ?>
               <?php $i = 1; ?>
               <?php foreach($user as $u): ?>
                 <tr>
                   <td scope="row"><?= $i++; ?></td>
                   <td><?= $u->user ?></td>
-                  <td><?= $u->password ?></td>
+                  <td><input type="password" value="<?= $u->password ?>" disabled></td>
                   <td><?= $u->level ?></td>
-                  <td><?= $u->sts ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                  <td class="<?=$u->sts?>"><?= $u->sts ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                   <td>
                     <?php if($u->status == '0'): ?>
                     <a href="<?= base_url() ?>home/aktif_user/<?= $u->kd_user ?>">
@@ -124,13 +114,16 @@
                   </td>
                 </tr>
               <?php endforeach; ?>
+            <?php } else { ?>
+                <tr><td colspan="6" align="center"><i>tidak ada data!</i></td></tr>
+            <?php } ?>
               </tbody>
             </table>
           </div>
           </div> <!-- end card body -->
 
           <div class="card-footer">
-            <nav aria-label="Page navigation example">
+            <!-- <nav aria-label="Page navigation example">
               <ul class="pagination justify-content-end">
                 <li class="page-item">
                   <a class="page-link" href="#" aria-label="Previous">
@@ -148,7 +141,7 @@
                   </a>
                 </li>
               </ul>
-            </nav>
+            </nav> -->
           </div> <!-- end card footer -->
         </div> <!-- end card -->
     </div> <!-- end col -->
@@ -165,7 +158,7 @@
         </button>
       </div>
       <div class="modal-body">
-          <form action="pro-registrasi" method="post">
+          <form action="<?= base_url('pro-registrasi')?>" method="post">
             <div class="form-group">
               <input type="hidden" name="nik" id="nik">
               <input type="text" class="form-control" id="nama_lengkap" disabled>

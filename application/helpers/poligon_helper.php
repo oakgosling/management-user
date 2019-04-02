@@ -10,25 +10,11 @@ if (!function_exists("uuid_generator")) {
 
 }
 
-if (!function_exists("uuid_auto")) {
-
-    function uuid_auto($id, $table) {
-        $CI = & get_instance();
-        $get = $CI->db->query("SELECT MAX($id)+1 as id FROM  $table")->row();    
-        if (!empty($get->id)){
-            return $get->id; 
-         }  else {
-        return 1; 
-        }
-
-    }
-}
-
 if (!function_exists("auto_inc")) {
 
     function auto_inc($id, $table) {
         $CI = & get_instance();
-        $get = $CI->db->query("SELECT MAX($id)+1 as id FROM  $table")->row();
+        $get = $CI->db->query("SELECT MAX($id)+1 as id FROM $table")->row();
         if (!empty($get->id)){
            return $get->id; 
         }  else {

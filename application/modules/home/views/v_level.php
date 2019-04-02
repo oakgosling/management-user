@@ -4,7 +4,7 @@
 			<div class="col col-md-8 offset-2">
 				<div class="card">
 					<div class="card-header">
-						<p>List Url</p>
+						<p>List Level</p>
 					</div>
 					<div class="card-body">
 						<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addLevel">
@@ -14,27 +14,21 @@
 				            <thead>
 				                <tr>
 				                  <th scope="col">#</th>
-				                  <th scope="col">Url</th>
-				                  <th scope="col">Deskripsi</th>
-				                  <th scope="col">Nama View</th>
+				                  <th scope="col">Level</th>
 				                  <th scope="col">Aksi</th>
 				                </tr>
 				            </thead>
 				            <tbody>
 				            	<?php $i = 1; ?>
-				            	<?php foreach($url as $list_url): ?>
+				            	<?php foreach($level as $lv): ?>
 				                <tr>
 				                  <th scope="row"><?= $i++; ?></th>
-				                  <td><?= $list_url->url ?></td>
-				                  <td><?= $list_url->deskripsi_url ?></td>
-				                  <td><?= $list_url->nama_view ?></td>
+				                  <td><?= $lv->level ?></td>
 				                  <td>
-				                    <a href="" data-toggle="modal" data-target="#addLevel">
-				                      <img width="20" src="<?php echo base_url() ?>assets/svg/si-glyph-edit.svg"/>
-				                    </a>
-				                    &nbsp;
-				                    <a href="">
-				                      <img width="20" src="<?php echo base_url() ?>assets/svg/si-glyph-trash.svg"/>
+				                      <img style="cursor: pointer;" width="20" src="<?php echo base_url('assets/svg/si-glyph-edit.svg') ?>" data-toggle="modal" data-target="#addLevel"/>
+				                    	&nbsp;
+				                    <a href="<?= base_url('home/level/delete_level/') . $lv->id_level ?>">
+				                      <img width="20" src="<?php echo base_url('assets/svg/si-glyph-trash.svg') ?>"/>
 				                    </a>
 				                  </td>
 				                </tr>
@@ -52,17 +46,20 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Url</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add Level</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Simpan</button>
-      </div>
-    </div>
+      	<form action="<?= base_url('home/level/add_level') ?>" method="POST">
+		      <div class="modal-body">
+		      		<input type="hidden" name="id_level" />
+		        	<input type="text" name="level" value="" placeholder="Level .." class="form-control" autofocus />
+		      </div>
+		      <div class="modal-footer">
+		        	<button type="submit" class="btn btn-primary">Simpan</button>
+		      </div>
+		</form>
+	</div>
   </div>
 </div>

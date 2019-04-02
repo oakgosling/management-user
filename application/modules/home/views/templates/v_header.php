@@ -42,6 +42,13 @@
               .item-drop a{
                 text-decoration: none;
               }
+
+              .Aktif {
+                color: green;
+              }
+              .Nonaktif {
+                color: red;
+              }
             </style>
     </head>
     <body>
@@ -54,22 +61,24 @@
           <!-- nav responsive -->
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item"><a href="#" class="nav-link">
-                <?php echo $this->session->userdata('username') ?></a>
+              <li class="nav-item"><a href="javascript:void(0);" class="nav-link">
+                <?php echo ucfirst($this->session->userdata('username')) ?></a>
               </li>
-
+              <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url();?>">Home</a>
+              </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Pengaturan
                 </a>
                 <ul class="dropdown-menu item-drop" aria-labelledby="navbarDropdown">
-                  <li><a href="<?= base_url() ?>level">List Level</a></li>
+                  <li><a href="<?= base_url() ?>home/level">List Level</a></li>
                   <div class="dropdown-divider"></div>
-                  <li><a href="<?= base_url() ?>url">List Url</a></li>
+                  <li><a href="<?= base_url() ?>home/url">List Url</a></li>
                   <div class="dropdown-divider"></div>
-                  <li><a href="<?= base_url() ?>privilege">List Privilege</a></li>
+                  <li><a href="<?= base_url() ?>home/privilege">List Privilege</a></li>
                   <div class="dropdown-divider"></div>
-                  <li><a href="<?= base_url() ?>hak_akses">Hak Akses</a></li>
+                  <li><a href="<?= base_url() ?>home/hak_akses">Hak Akses</a></li>
                 </ul>
               </li>
               

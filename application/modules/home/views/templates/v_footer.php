@@ -25,6 +25,13 @@
                 $("#nik").val($nik);
                 $("#nama_lengkap").val($nama_lengkap);
             }
+            function get_id($id){
+                var id = document.getElementById('id').value;
+                if($id == id){
+                    $id = 0;
+                }
+                $("#id").val($id);
+            }
 
         </script>
 
