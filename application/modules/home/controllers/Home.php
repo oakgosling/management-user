@@ -70,17 +70,13 @@ class Home extends CI_Controller {
 				
 		$query = $this->m_home->daftar($data);
 		if($query > 0) {
-			echo "
-				<script>
-					alert('Data Berhasil Ditambahkan!');
-					document.location.href = 'home';
-				</script>";
+			$this->session->set_flashdata('alert', '<div class="alert alert-success" role="alert">
+  			Berhasil menambah user!</div>');
+  			redirect('home');
 		} else {
-			echo "
-				<script>
-					alert('Data Gagal Ditambahkan!');
-					document.location.href = 'home';
-				</script>";
+			$this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert">
+  			Gagal menambah user!</div>');
+  			redirect('home');
 		}
 	}
 
@@ -89,7 +85,9 @@ class Home extends CI_Controller {
 
 		$query = $this->m_home->delete_user($kd_user);
 		if($query > 0) {
-			return redirect('home');
+			$this->session->set_flashdata('alert', '<div class="alert alert-success" role="alert">
+  			Berhasil menghapus user!</div>');
+  			redirect('home');
 		}
 	}
 
@@ -97,7 +95,9 @@ class Home extends CI_Controller {
 
 		$query = $this->m_home->aktif_user($kd_user);
 		if($query > 0){
-			return redirect('home');
+			$this->session->set_flashdata('alert', '<div class="alert alert-success" role="alert">
+  			Berhasil mengaktifkan status user!</div>');
+  			redirect('home');
 		}
 	}
 
@@ -105,7 +105,9 @@ class Home extends CI_Controller {
 
 		$query = $this->m_home->nonaktif_user($kd_user);
 		if($query >= 0){
-			return redirect('home');
+			$this->session->set_flashdata('alert', '<div class="alert alert-success" role="alert">
+  			Berhasil menonaktifkan status user!</div>');
+  			redirect('home');
 		}
 	}
 

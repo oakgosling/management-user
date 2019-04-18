@@ -27,15 +27,27 @@ class Level extends CI_Controller {
 		$level = $this->input->post('level');
 		
 		$data = ['level' => $level];
-		if ($id == '') $data['id_level'] = auto_inc('id_level', 't_level');
+		if ($id == '') {
+			$data['id_level'] = auto_inc('id_level', 't_level');
+			$this->m_level->add_level($data);
+			$this->session->set_flashdata('sukses', '<div class="alert alert-success" role="alert">
+  			Berhasil menambah data!</div>');
+  			redirect('home/level');
+		} else {
+			$this->m_level->update_level('t_level', $data, ['id_level' => $id]);
+			$this->session->set_flashdata('sukses', '<div class="alert alert-success" role="alert">
+  			Berhasil mengubah data!</div>');
+  			redirect('home/level');
+		}
 		if ($data['level'] == NULL) redirect('home/level','refresh');
-		$this->m_level->add_level($data);
-		redirect('home/level');
 	}
 	public function delete_level($id){
 		$res = $this->m_level->delete_level('t_level', ['id_level' => $id]);
 		if($res > 0){
-			redirect('home/level');
+			$this->session->set_flashdata('sukses', '<div class="alert alert-success" role="alert">
+  			Berhasil menghapus data!</div>');
+  			redirect('home/level');
 		}
 	}
+
 }

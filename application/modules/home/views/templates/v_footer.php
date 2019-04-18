@@ -21,10 +21,12 @@
                 $("#btn-users").slideUp("slow");
                 $("#btn-level").show("slow");
             }
+            // function for user
             function get_nama($nik, $nama_lengkap) {
                 $("#nik").val($nik);
                 $("#nama_lengkap").val($nama_lengkap);
             }
+            // function for url
             function get_id($id){
                 var id = document.getElementById('id').value;
                 if($id == id){
@@ -32,7 +34,37 @@
                 }
                 $("#id").val($id);
             }
-
+            // function for level
+            function update($id, $level){
+                var id = document.getElementById('id').value;
+                if(id == null){
+                    $('#id').val("");
+                    $('#level').val("");
+                } else {
+                    $('#id').val($id);
+                    $('#level').val($level);
+                }
+                
+            }
+            // function for privilege
+            function privilege($id, $privilege, $edit, $delete, $view, $insert){
+                var id = document.getElementById('id').value;
+                if(id == null){
+                    $('#id').val("");
+                    $('#privilege').val("");
+                    $('#edit').val("");
+                    $('#delete').val("");
+                    $('#view').val("");
+                    $('#insert').val("");
+                } else {
+                    $('#id').val($id);
+                    $('#privilege').val($privilege);
+                    $('#edit').val($edit);
+                    $('#delete').val($delete);
+                    $('#view').val($view);
+                    $('#insert').val($insert);
+                }
+            }
         </script>
 
 </body>

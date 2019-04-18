@@ -66,6 +66,7 @@
     </div> <!-- end col -->
 
     <div class="col-md-8">
+      <?= $this->session->flashdata('alert') ?>
       <div class="card">
         <div class="card-header">ALL MEMBERS</div>
           <div class="card-body">

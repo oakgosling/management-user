@@ -54,18 +54,19 @@ class Url extends CI_Controller {
 		$res = $this->m_url->insert($data);
 
 		if($res > 0){
-			echo "
-				<script>
-					alert('Data Berhasil Ditambahkan!');
-					document.location.href = '". base_url() ."home/url';
-				</script>";
+			$this->session->set_flashdata('alert', '<div class="alert alert-success" role="alert">
+  			Berhasil menambah data!</div>');
+  			redirect('home/url');
+			// echo "
+			// 	<script>
+			// 		alert('Data Berhasil Ditambahkan!');
+			// 		document.location.href = '". base_url() ."home/url';
+			// 	</script>";
 			//redirect('home/url');
 		} else {
-			echo "
-				<script>
-					alert('Data Gagal Ditambahkan!');
-					document.location.href = '". base_url() ."home/url';
-				</script>";
+			$this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert">
+  			Gagal menambah data!</div>');
+  			redirect('home');
 		}
 		
 	}
@@ -76,7 +77,9 @@ class Url extends CI_Controller {
 
 		$res = $this->m_url->update('t_url', $data, ['id_url' => $id_url]);
 		if($res > 0){
-			redirect('home/url','refresh');
+			$this->session->set_flashdata('alert', '<div class="alert alert-success" role="alert">
+  			Berhasil!</div>');
+  			redirect('home/url');
 		}
 	}
 

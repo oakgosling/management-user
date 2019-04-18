@@ -2,12 +2,13 @@
 	<div class="container"> 
 		<div class="row">
 			<div class="col col-md-8 offset-2">
+				<?= $this->session->flashdata('sukses') ?>
 				<div class="card">
 					<div class="card-header">
 						<p>List Level</p>
 					</div>
 					<div class="card-body">
-						<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addLevel">
+						<button onclick="update();" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addLevel">
 							<img width="10" src="<?php echo base_url() ?>assets/svg/si-glyph-plus.svg">&nbsp;Add
 						</button>
 						<table class="table table-hover">
@@ -25,10 +26,13 @@
 				                  <th scope="row"><?= $i++; ?></th>
 				                  <td><?= $lv->level ?></td>
 				                  <td>
-				                      <img style="cursor: pointer;" width="20" src="<?php echo base_url('assets/svg/si-glyph-edit.svg') ?>" data-toggle="modal" data-target="#addLevel"/>
+				                      <img style="cursor: pointer;" width="20" src="<?php echo base_url('assets/svg/si-glyph-edit.svg') ?>" data-toggle="modal" data-target="#addLevel" onclick="update(
+				                      		'<?= $lv->id_level ?>',
+				                      		'<?= $lv->level ?>'
+				                      );" />
 				                    	&nbsp;
 				                    <a href="<?= base_url('home/level/delete_level/') . $lv->id_level ?>">
-				                      <img width="20" src="<?php echo base_url('assets/svg/si-glyph-trash.svg') ?>"/>
+				                      <img width="20" src="<?php echo base_url('assets/svg/si-glyph-trash.svg') ?>" onclick="return confirm('Hapus?');" />
 				                    </a>
 				                  </td>
 				                </tr>
@@ -46,15 +50,15 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Level</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Level</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       	<form action="<?= base_url('home/level/add_level') ?>" method="POST">
 		      <div class="modal-body">
-		      		<input type="hidden" name="id_level" />
-		        	<input type="text" name="level" value="" placeholder="Level .." class="form-control" autofocus />
+		      		<input type="hidden" name="id_level" id="id" />
+		        	<input type="text" name="level" id="level" placeholder="Level .." class="form-control" autofocus />
 		      </div>
 		      <div class="modal-footer">
 		        	<button type="submit" class="btn btn-primary">Simpan</button>

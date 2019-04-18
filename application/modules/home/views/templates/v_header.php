@@ -10,6 +10,7 @@
         <link type="text/css" href="<?php echo base_url();?>assets/images/icons/css/font-awesome.css" rel="stylesheet">
         <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
             rel='stylesheet'>
+        <link rel="icon" href="<?= base_url('assets/') ?>images/poligon.png">
             <style>
               #btn-users{
                 display: none

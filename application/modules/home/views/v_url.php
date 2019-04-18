@@ -1,5 +1,9 @@
-
-	<div class="container"> 
+	<div class="container">
+		<div class="row">
+			<div class="col col-lg-8 offset-2">
+				<?= $this->session->flashdata('alert') ?>
+			</div>
+		</div>
 		<div class="row">
 			<div class="col col-md-4 offset-2">
 				<div class="card">
