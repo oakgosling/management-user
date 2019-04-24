@@ -6,23 +6,23 @@ class Home extends CI_Controller {
 	public function __construct(){
         parent::__construct();
         $this->load->model('m_home');
-        //$this->load->model('pagination_model');
     } 
 
 	public function index()
 	{
 		if($this->session->userdata('username') != ''){
-			$data['judul'] = "Admin Siakad Poligon";
-			$data['level'] = $this->m_home->getData('t_level');
-			$data['user']  = $this->m_home->get_data_user();
+			$data['judul']        = "Admin Siakad Poligon";
+			$data['level']        = $this->m_home->getData('t_level');
+			$data['user']         = $this->m_home->get_data_user();
 
-			// pagination
-			$jumlah_data          = $this->m_home->jumlah_data('v_list_biodata');
-			$config['base_url']   = base_url() . 'home/index/';
-			$config['total_rows'] = $jumlah_data;
-			$config['per_page']   = 5;
-			$choice               = $config['total_rows'] / $config['per_page'];
-			$config['num_links']  = floor($choice);
+			// pagination for biodata
+			$jumlah_data           = $this->m_home->jumlah_data('v_list_biodata');
+			$config['base_url']    = base_url() . 'home/index/';
+			$config['total_rows']  = $jumlah_data;
+			$config['per_page']    = 5;
+			$config['uri_segment'] = 3;
+			$choice                = $config['total_rows'] / $config['per_page'];
+			$config['num_links']   = floor($choice);
 
 			// style pagination with bootstrap
 			$config['full_tag_open']   = '<ul class="pagination justify-content-end">';
@@ -46,8 +46,8 @@ class Home extends CI_Controller {
 			$config['num_tag_close']   = '</li>';
 			
 			$this->pagination->initialize($config);
-			$data['page']		  = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-			$data['list_biodata'] = $this->m_home->list_biodata($data['page'], $config['per_page']);
+			$page                 = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+			$data['list_biodata'] = $this->m_home->list_biodata($page, $config['per_page']);
 			$data['paging']       = $this->pagination->create_links();
 
 			$this->load->view('templates/v_header', $data);

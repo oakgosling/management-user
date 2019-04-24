@@ -92,24 +92,24 @@
                 <tr>
                   <td scope="row"><?= $i++; ?></td>
                   <td><?= $u->user ?></td>
-                  <td><input type="password" value="<?= $u->password ?>" disabled></td>
+                  <td><input class="members" type="password" value="<?= $u->password ?>"></td>
                   <td><?= $u->level ?></td>
                   <td class="<?=$u->sts?>"><?= $u->sts ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                   <td>
                     <?php if($u->status == '0'): ?>
-                    <a href="<?= base_url() ?>home/aktif_user/<?= $u->kd_user ?>">
+                    <a class="members" href="<?= base_url() ?>home/aktif_user/<?= $u->kd_user ?>">
                       <img width="18" src="<?php echo base_url() ?>assets/svg/si-glyph-checked.svg"/>
                     </a>
                   <?php endif; ?>
                   <?php if($u->status == '1'): ?>
-                    <a href="<?= base_url() ?>home/nonaktif_user/<?= $u->kd_user ?>">
+                    <a class="members" href="<?= base_url() ?>home/nonaktif_user/<?= $u->kd_user ?>">
                       <img width="18" src="<?php echo base_url() ?>assets/svg/si-glyph-delete.svg"/>
                     </a>
                   <?php endif; ?>
-                    <a href="#">
+                    <a class="members" href="#">
                       <img width="18" src="<?php echo base_url() ?>assets/svg/si-glyph-arrow-circle-rycycle.svg"/>
                     </a>
-                    <a href="<?= base_url() ?>home/delete_user/<?= $u->kd_user ?>" onclick="return confirm('Apakah Data Akan Dihapus?');">
+                    <a class="members" href="<?= base_url() ?>home/delete_user/<?= $u->kd_user ?>" onclick="return confirm('Apakah Data Akan Dihapus?');">
                       <img width="18" src="<?php echo base_url() ?>assets/svg/si-glyph-trash.svg"/>
                     </a>
                   </td>
@@ -124,25 +124,7 @@
           </div> <!-- end card body -->
 
           <div class="card-footer">
-            <!-- <nav aria-label="Page navigation example">
-              <ul class="pagination justify-content-end">
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav> -->
+            
           </div> <!-- end card footer -->
         </div> <!-- end card -->
     </div> <!-- end col -->

@@ -11,7 +11,7 @@ class M_url extends CI_Model{
 
 	// get t_head_menu limit
 	public function get_limit(){
-		$query = $this->db->query("SELECT * FROM t_head_menu LIMIT 2, 3"); // offset = 2, record = 3
+		$query = $this->db->query("SELECT * FROM t_head_menu where id_head_menu >= 2"); // offset = 2, record = 3
 		return $query->result();
 	}
 

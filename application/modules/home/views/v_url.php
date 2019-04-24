@@ -41,7 +41,9 @@
 					</div>
 					<div class="card-body">
 						<div id="accordion">
-							<?php foreach($head_menu as $hm) { ?>
+							<?php 
+							$i = 1;
+							foreach($head_menu as $hm) { ?>
 							  <div class="card">
 							    <div class="card-header" id="headingOne">
 							      <h5 class="mb-0">
@@ -55,11 +57,13 @@
 
 							    <div id="<?= $hm->id_head_menu ?>" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
 							    
-							    	<?php foreach($tes as $uh) { ?>
+							    	<?php foreach($url_head[$i] as $uh) { ?>
 								      <div class="card-body">
 								        <?= ucfirst($uh->url) ?>
 								      </div>
-								  	<?php } ?>
+								  	<?php }
+								  		$i++;
+								  	 ?>
 							    </div>
 							  </div> <!-- end card -->
 							  <?php } ?>

@@ -20,11 +20,13 @@ class M_home extends CI_Model {
 		$this->db->join('t_level', 't_level.id_level = t_user.id_level');
 		$query = $this->db->get();
 		return $query->result();
+
+		// $this->db->query("SELECT *, if(status = 1, 'Aktif', 'Nonaktif') AS u.sts FROM t_user u LIMIT $offset, $record")->result();
 	}
 
 	// select daftar list biodata All kategory
-    public function list_biodata($offset, $record){
-        $query = $this->db->query("SELECT * FROM v_list_biodata WHERE kd not IN (SELECT kd_user FROM t_user) limit $offset, $record");
+    public function list_biodata($page, $record){
+        $query = $this->db->query("SELECT * FROM v_list_biodata WHERE kd not IN (SELECT kd_user FROM t_user) limit $page, $record");
         return $query->result();
 	}
 

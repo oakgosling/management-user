@@ -50,6 +50,13 @@
               .Nonaktif {
                 color: red;
               }
+              a.members {
+                  text-decoration: none;
+              }
+              input.members {
+                  background: none; 
+                  border: none;
+              }
             </style>
     </head>
     <body>

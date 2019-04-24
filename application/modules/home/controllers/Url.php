@@ -14,9 +14,12 @@ class Url extends CI_Controller {
 			$data['judul']       = "Admin Siakad Poligon";
 			$data['url']         = $this->m_url->get('t_url', ['id_head_menu' => 0]);
 			$data['head_menu']   = $this->m_url->get_limit();
-			//$data['url_head1']   = $this->m_url->get('t_url', ['id_head_menu' => 2]);
-			//$data['url_head2']   = $this->m_url->get('t_url', ['id_head_menu' => 3]);
-			//$data['url_head3']   = $this->m_url->get('t_url', ['id_head_menu' => 4]);
+			$i = 1;
+			foreach($data['head_menu'] as $d) {
+				$data['url_head'][$i]   = $this->m_url->get('t_url', ['id_head_menu' => $d->id_head_menu]);
+				$i++;
+			}
+			// print_r($data['url_head']); die;
 			$data['level_short'] = $this->m_url->select_max();
 
 			$this->load->view('home/templates/v_header', $data);
