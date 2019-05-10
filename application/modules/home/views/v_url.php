@@ -12,7 +12,7 @@
 					</div>
 					<div class="card-body">
 						<form action="<?= base_url('home/url/update') ?>" method="POST">
-							<input type="text" name="id" value="0" id="id">
+							<input type="hidden" name="id" value="0" id="id">
 							<table class="table table-hover">
 								<?php 
 									$i = 1;

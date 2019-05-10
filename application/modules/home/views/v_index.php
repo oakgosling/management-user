@@ -19,7 +19,6 @@
                 <option value="2">Mahasiswa</option>
                 <option value="3">Tenaga Akademik</option>
               </select>
-              <button type="submit">pilih</button>
           </form> <br />
           
           <input type="search" name="search" class="form-control" placeholder="Search .." autofocus>
